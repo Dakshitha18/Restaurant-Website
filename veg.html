@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vegetarian Menu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .menu-container {
+            width: 80%;
+            max-width: 700px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            background: linear-gradient(135deg, #ff9800, #ff5722);
+            color: white;
+            padding: 15px;
+            border-radius: 10px 10px 0 0;
+            margin: -20px -20px 20px -20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .back-button {
+            position: absolute;
+            left: 5px;
+            font-size: 25px;
+            color: rgb(17, 17, 16);
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .category {
+            background: #ff9800;
+            color: white;
+            padding: 12px;
+            font-size: 22px;
+            text-align: left;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+        .category:hover {
+            background: #e68900;
+        }
+        .toggle-icon {
+            margin-left: auto;
+            padding-left: 10px;
+        }
+        .items-container {
+            display: none;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            padding: 10px;
+        }
+        .items {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px;
+            background: #fff8e1;
+            border-radius: 8px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+        .items:hover {
+            transform: scale(1.05);
+        }
+        .select-btn {
+            background: linear-gradient(135deg, #ff9800, #ff5722);
+            color: white;
+            padding: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 15px;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .select-btn:hover {
+            background: linear-gradient(135deg, #ff5722, #d32f2f);
+            transform: scale(1.05);
+            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+        }
+        .select-btn:active {
+            transform: scale(0.95);
+        }
+    </style>
+
+<body>
+
+    <body>
+
+        <div class="menu-container">
+            <h1><a href="index.html" class="back-button">&larr;</a> Vegetarian Menu</h1>
+                
+                <div class="category" onclick="toggleCategory(this)">Sweets <span class="toggle-icon">+</span></div>
+                <div class="items-container">
+                    <div class="items"><label class="item-label"> Gulab Jamun</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Rasmalai</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Jaangri</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Kaala Jamun</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Poornaalu</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Chakkara Pongali</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Badusha</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Madatha Kaja</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Boondi Laddu</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Semiya</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Pineapple Kesari</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Rava Kesari</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Double ka mitha</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Carrot Halwa</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Sorakaya Halwa</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Paan Petha</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Kaju Katli</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Badam Halwa</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Bobbatlu</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Milk Mysore Paak</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Mysore Paak</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Moongdaal Halwa</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Basundhi</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Junnu</label><input type="checkbox"></div>
+                </div>
+        
+                <div class="category" onclick="toggleCategory(this)">Hot Items <span class="toggle-icon">+</span></div>
+                <div class="items-container">
+                    <div class="items"><label class="item-label"> Tamalapaaku Bajji</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Banana Bajji</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Mirchi Bajji/Cut bajji</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Masala Vada</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Corn Samosa</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Veg Spring Rolls</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Veg Bullet</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Veg Kaju Cutlet</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Madras Pakodi</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Ajwan Pakodi</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Gaarelu + Coconut Chutney</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Alasanda Gaarelu + Coconut Chutney</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Dahi Vada</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Kaara Boondi</label><input type="checkbox"></div>
+                </div>
+        
+                <div class="category" onclick="toggleCategory(this)">Roti Items <span class="toggle-icon">+</span></div>
+                <div class="items-container">
+                    <div class="items"><label class="item-label"> Poori</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Pulka</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Chapathi</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Rumali Roti</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Tandoori Roti</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Naan</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Butter Naan</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Kulcha</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Baby Kulcha</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Masala Kulcha</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Jonne Rotte</label><input type="checkbox"></div>
+                </div>
+        
+                <div class="category" onclick="toggleCategory(this)">Rice Items <span class="toggle-icon">+</span></div>
+                <div class="items-container">
+                    <div class="items"><label class="item-label"> Veg Pulav</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Kaju Pulav</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Bagara Rice</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Jackfruit Dum Biryani</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Mushroom Dum Biryani</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Jeera Rice</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Veg Fried Rice</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Veg Dum Biryani</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Veg Noodles</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Coconut Rice</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Tamarind Pulihora</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Lemon Pulihora</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Mango Pulihora</label><input type="checkbox"></div>
+                </div>
+        
+                <div class="category" onclick="toggleCategory(this)">Masala Curries <span class="toggle-icon">+</span></div>
+                <div class="items-container">
+                    <div class="items"><label class="item-label"> Panner Butter Masala</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Kadai Panner</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Menthi Chaman</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Veg Mixed Kurma</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Navaratan Kurma</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Kadai Veg</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Chole Masala</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Mirchi Kaasalan</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Gutthi Vankaya</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Capsicum, Mushroom Masala</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Babycorn Masala</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Phool Makhana Kurma</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Aloo Matar Kurma</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Koftha Masala</label><input type="checkbox"></div>
+                </div>
+        
+                <div class="category" onclick="toggleCategory(this)">Gujju Curries <span class="toggle-icon">+</span></div>
+                <div class="items-container">
+                    <div class="items"><label class="item-label"> Mulakkaya Kaaju Curry</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Cauliflower Tomato</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Vankaya Pacchi Batani</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Beerakaya Senagapappu</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Vankaya Mulakkada Curry</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Chikkudu Tomato Curry</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Kandabacchali Curry</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Dappalam</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Gummadi Mukkala Pulusu</label><input type="checkbox"></div>
+                </div>
+        
+                <div class="category" onclick="toggleCategory(this)">Fry and Dry Curries <span class="toggle-icon">+</span></div>
+                <div class="items-container">
+                    <div class="items"><label class="item-label"> Gobi 65</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Aloo 65</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Babycorn 65</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Panner 65</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Thotakoora Liver Fry</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Babycorn Ulavachaaru Dry</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Veg Manchuriya Dry</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Gobi Manchuriya</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Bendi Kaaju Coconut Fry</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Donda Palli Coconut Fry</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Vankaya Pakodi Fry</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Aalu Fry</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Arati Kaaya Paratu Fry</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Kanda Paratu Fry</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Kanda Kaju Thurumu Fry</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Panasakaya Paratu Fry</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Carrot Beans Fry</label><input type="checkbox"></div>
+                </div>
+        
+                <div class="category" onclick="toggleCategory(this)">Pacchallu and Kaaram Podulu <span class="toggle-icon">+</span></div>
+                <div class="items-container">
+                    <div class="items"><label class="item-label"> Gongura Pacchadi (ulli)</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Mamidi Mukkala Pacchadi</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Mamidi Thurumu Pacchadi</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Ullipaya pickle</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Kakarakaya Pacchadi</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Dosa aava</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Vankaya Dosakaya Chutney</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Dosakaya Pacchi Dabbala Pacchadi</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Beerakaya Tomato Chutney</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Kotthimeera Pacchadi</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Pudhina Pacchadi</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Nallagaaram</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Karivepaaku Kaaram</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Kandhi Podi</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Kobbari Kaaram</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Nuvvula Kaaram</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Ghee</label><input type="checkbox"></div>
+                </div>
+        
+                <div class="category" onclick="toggleCategory(this)">Common Items <span class="toggle-icon">+</span></div>
+                <div class="items-container">
+                    <div class="items"><label class="item-label"> White Rice</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Pappu Mixed</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Sambar</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Rasam</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Perugu</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Perugu Chutney</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Appadam</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Minapa Vadiyalu</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Beerakaya Tomato Chutney</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Oora Mirchi</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Prayaams</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Mineral Water / 200ml Bottle</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Green Salad</label><input type="checkbox"></div>
+                </div>
+        
+                <div class="category" onclick="toggleCategory(this)">Special Items <span class="toggle-icon">+</span></div>
+                <div class="items-container">
+                    <div class="items"><label class="item-label"> Banana / chakrakheli</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Ulavachaaru - cream</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Icecream</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Fruit Custard </label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Cut Fruits</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Paan / Sompu</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Cool Drinks</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Fruit Juice / Badam Milk</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> All Soups</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Chaat Counter</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Sweet Mela</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Fruit Counter</label><input type="checkbox"></div>
+                    <div class="items"><label class="item-label"> Tiffin Counter</label><input type="checkbox"></div>
+                </div>
+                <button class="select-btn" onclick="saveSelections()">Continue</button>
+
+        </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+        
+                
+                function toggleCategory(event) {
+                    let category = event.currentTarget;
+                    let itemsContainer = category.nextElementSibling;
+                    let toggleIcon = category.querySelector('.toggle-icon');
+        
+                    if (itemsContainer.style.display === "block") {
+                        itemsContainer.style.display = "none";
+                        toggleIcon.textContent = "+";
+                    } else {
+                        itemsContainer.style.display = "block";
+                        toggleIcon.textContent = "-";
+                    }
+                }
+        
+               
+                document.querySelectorAll(".category").forEach(category => {
+                    category.addEventListener("click", toggleCategory);
+                });
+        
+                function saveSelections() {
+                    let selectedItems = JSON.parse(localStorage.getItem("selectedItems")) || [];
+        
+                    document.querySelectorAll('.items input[type="checkbox"]:checked').forEach((checkbox) => {
+                        let itemName = checkbox.closest('.items').querySelector('.item-label').textContent.trim();
+                        if (!selectedItems.includes(itemName)) {
+                            selectedItems.push(itemName); 
+                        }
+                    });
+        
+                    localStorage.setItem("selectedItems", JSON.stringify(selectedItems));
+                    window.location.href = "confirm_order.html"; 
+                }
+        
+                const continueButton = document.querySelector(".select-btn");
+                if (continueButton) {
+                    continueButton.addEventListener("click", saveSelections);
+                }
+        
+                let selectedItems = JSON.parse(localStorage.getItem("selectedItems")) || [];
+                document.querySelectorAll('.items input[type="checkbox"]').forEach(checkbox => {
+                    let itemName = checkbox.closest('.items').querySelector('.item-label').textContent.trim();
+                    if (selectedItems.includes(itemName)) {
+                        checkbox.checked = true; 
+                    }
+                });
+        
+            });
+        </script>
+        
+
+
+</body>
+</html>
