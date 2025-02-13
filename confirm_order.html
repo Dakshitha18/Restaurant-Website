@@ -13,7 +13,7 @@
             margin: 0;
             padding: 0;
         }
-        .menu-container {
+        .container {
             width: 90%;
             max-width: 600px;
             margin: 50px auto;
@@ -43,7 +43,7 @@
         .back-button:hover {
             color: #d32f2f;
         }
-        #order-summary, #event-details {
+        .section {
             text-align: left;
             padding: 10px;
         }
@@ -68,7 +68,7 @@
             justify-content: space-between;
             box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
         }
-        input, select {
+        input {
             width: 100%;
             padding: 10px;
             margin: 5px 0;
@@ -102,11 +102,10 @@
 </head>
 <body>
 
-<div class="menu-container">
+<div class="container">
     <h1><a href="index.html" class="back-button">&larr;</a> Confirm Order</h1>
 
-    
-    <div id="event-details">
+    <div class="section">
         <h2>Event Details</h2>
         <label>Name:</label>
         <input type="text" id="name" placeholder="Enter your name">
@@ -121,21 +120,19 @@
         <input type="number" id="guests" placeholder="Enter number of guests">
     </div>
 
-    
-    <div id="order-summary">
+    <div class="section">
         <h2>Your Selected Items:</h2>
         <ul id="selected-items"></ul>
     </div>
 
     <button class="whatsapp-btn" onclick="sendToWhatsApp()">Send to WhatsApp</button>
 </div>
+
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-    
-    let selectedItems = JSON.parse(localStorage.getItem("selectedItems")) || [];
-    let selectedItemsList = document.getElementById("selected-items");
+        let selectedItems = JSON.parse(localStorage.getItem("selectedItems")) || [];
+        let selectedItemsList = document.getElementById("selected-items");
 
-    if (selectedItemsList) {
         if (selectedItems.length === 0) {
             selectedItemsList.innerHTML = "<p class='no-items'>No items selected.</p>";
         } else {
@@ -145,41 +142,38 @@
                 selectedItemsList.appendChild(li);
             });
         }
+    });
+
+    function sendToWhatsApp() {
+        let name = document.getElementById("name").value.trim();
+        let location = document.getElementById("location").value.trim();
+        let eventDate = document.getElementById("event-date").value;
+        let guests = document.getElementById("guests").value.trim();
+
+        if (!name || !location || !eventDate || !guests) {
+            alert("Please fill in all event details before confirming.");
+            return;
+        }
+
+        let selectedItems = JSON.parse(localStorage.getItem("selectedItems")) || [];
+
+        if (selectedItems.length === 0) {
+            alert("No items selected. Please add items before confirming.");
+            return;
+        }
+
+        let message = `*Hello, I would like a quote for my event.*\n\n` +
+                      `👤 *Name:* ${name}\n` +
+                      `📍 *Location:* ${location}\n` +
+                      `📅 *Date:* ${eventDate}\n` +
+                      `👥 *Guests:* ${guests}\n\n` +
+                      `🍽️ *Selected Items:* \n- ${selectedItems.join("\n- ")}`;
+
+        let phoneNumber = "919704899633";  
+        let url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+        window.open(url, "_blank");
     }
-});
-
-// Make function accessible globally
-function sendToWhatsApp() {
-    let name = document.getElementById("name").value.trim();
-    let location = document.getElementById("location").value.trim();
-    let eventDate = document.getElementById("event-date").value;
-    let guests = document.getElementById("guests").value.trim();
-
-    if (!name || !location || !eventDate || !guests) {
-        alert("Please fill in all event details before confirming.");
-        return;
-    }
-
-    let selectedItems = JSON.parse(localStorage.getItem("selectedItems")) || [];
-
-    if (selectedItems.length === 0) {
-        alert("No items selected. Please add items before confirming.");
-        return;
-    }
-
-    let message = `*Hello, I would like a quote for my event.*\n\n` +
-                  `👤 *Name:* ${name}\n` +
-                  `📍 *Location:* ${location}\n` +
-                  `📅 *Date:* ${eventDate}\n` +
-                  `👥 *Guests:* ${guests}\n\n` +
-                  `🍽️ *Selected Items:* \n- ${selectedItems.join("\n- ")}`;
-
-    let phoneNumber = "919704899633";  // Updated WhatsApp number
-    let url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-
-    window.open(url, "_blank");
-}
-
 </script>
 
 </body>
