@@ -105,7 +105,7 @@
 <div class="menu-container">
     <h1><a href="index.html" class="back-button">&larr;</a> Confirm Order</h1>
 
-    <!-- Event Details Input -->
+    
     <div id="event-details">
         <h2>Event Details</h2>
         <label>Name:</label>
@@ -121,7 +121,7 @@
         <input type="number" id="guests" placeholder="Enter number of guests">
     </div>
 
-    <!-- Selected Items Display -->
+    
     <div id="order-summary">
         <h2>Your Selected Items:</h2>
         <ul id="selected-items"></ul>
@@ -129,13 +129,13 @@
 
     <button class="whatsapp-btn" onclick="sendToWhatsApp()">Send to WhatsApp</button>
 </div>
-
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        
-        let selectedItems = JSON.parse(localStorage.getItem("selectedItems")) || [];
-        let selectedItemsList = document.getElementById("selected-items");
+    
+    let selectedItems = JSON.parse(localStorage.getItem("selectedItems")) || [];
+    let selectedItemsList = document.getElementById("selected-items");
 
+    if (selectedItemsList) {
         if (selectedItems.length === 0) {
             selectedItemsList.innerHTML = "<p class='no-items'>No items selected.</p>";
         } else {
@@ -145,36 +145,41 @@
                 selectedItemsList.appendChild(li);
             });
         }
+    }
+});
 
-        function sendToWhatsApp() {
-            let name = document.getElementById("name").value.trim();
-            let location = document.getElementById("location").value.trim();
-            let eventDate = document.getElementById("event-date").value;
-            let guests = document.getElementById("guests").value.trim();
+// Make function accessible globally
+function sendToWhatsApp() {
+    let name = document.getElementById("name").value.trim();
+    let location = document.getElementById("location").value.trim();
+    let eventDate = document.getElementById("event-date").value;
+    let guests = document.getElementById("guests").value.trim();
 
-            if (!name || !location || !eventDate || !guests) {
-                alert("Please fill in all event details before confirming.");
-                return;
-            }
+    if (!name || !location || !eventDate || !guests) {
+        alert("Please fill in all event details before confirming.");
+        return;
+    }
 
-            if (selectedItems.length === 0) {
-                alert("No items selected. Please add items before confirming.");
-                return;
-            }
+    let selectedItems = JSON.parse(localStorage.getItem("selectedItems")) || [];
 
-            let message = `*Hello, I would like a quote for my event.*\n\n` +
-                          `👤 *Name:* ${name}\n` +
-                          `📍 *Location:* ${location}\n` +
-                          `📅 *Date:* ${eventDate}\n` +
-                          `👥 *Guests:* ${guests}\n\n` +
-                          `🍽️ *Selected Items:* \n- ${selectedItems.join("\n- ")}`;
+    if (selectedItems.length === 0) {
+        alert("No items selected. Please add items before confirming.");
+        return;
+    }
 
-            let phoneNumber = "919704899633";
-            let url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    let message = `*Hello, I would like a quote for my event.*\n\n` +
+                  `👤 *Name:* ${name}\n` +
+                  `📍 *Location:* ${location}\n` +
+                  `📅 *Date:* ${eventDate}\n` +
+                  `👥 *Guests:* ${guests}\n\n` +
+                  `🍽️ *Selected Items:* \n- ${selectedItems.join("\n- ")}`;
 
-            window.open(url, "_blank");
-        }
-    });
+    let phoneNumber = "919704899633";  // Updated WhatsApp number
+    let url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+    window.open(url, "_blank");
+}
+
 </script>
 
 </body>
