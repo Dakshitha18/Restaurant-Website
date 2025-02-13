@@ -13,7 +13,7 @@
             margin: 0;
             padding: 0;
         }
-        .container {
+        .menu-container {
             width: 90%;
             max-width: 600px;
             margin: 50px auto;
@@ -43,7 +43,7 @@
         .back-button:hover {
             color: #d32f2f;
         }
-        .section {
+        #order-summary, #event-details {
             text-align: left;
             padding: 10px;
         }
@@ -68,7 +68,7 @@
             justify-content: space-between;
             box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
         }
-        input {
+        input, select {
             width: 100%;
             padding: 10px;
             margin: 5px 0;
@@ -102,10 +102,10 @@
 </head>
 <body>
 
-<div class="container">
+<div class="menu-container">
     <h1><a href="index.html" class="back-button">&larr;</a> Confirm Order</h1>
-
-    <div class="section">
+    
+    <div id="event-details">
         <h2>Event Details</h2>
         <label>Name:</label>
         <input type="text" id="name" placeholder="Enter your name">
@@ -119,8 +119,8 @@
         <label>Number of Guests:</label>
         <input type="number" id="guests" placeholder="Enter number of guests">
     </div>
-
-    <div class="section">
+    
+    <div id="order-summary">
         <h2>Your Selected Items:</h2>
         <ul id="selected-items"></ul>
     </div>
@@ -133,14 +133,16 @@
         let selectedItems = JSON.parse(localStorage.getItem("selectedItems")) || [];
         let selectedItemsList = document.getElementById("selected-items");
 
-        if (selectedItems.length === 0) {
-            selectedItemsList.innerHTML = "<p class='no-items'>No items selected.</p>";
-        } else {
-            selectedItems.forEach(item => {
-                let li = document.createElement("li");
-                li.textContent = item;
-                selectedItemsList.appendChild(li);
-            });
+        if (selectedItemsList) {
+            if (selectedItems.length === 0) {
+                selectedItemsList.innerHTML = "<p class='no-items'>No items selected.</p>";
+            } else {
+                selectedItems.forEach(item => {
+                    let li = document.createElement("li");
+                    li.textContent = item;
+                    selectedItemsList.appendChild(li);
+                });
+            }
         }
     });
 
@@ -169,7 +171,7 @@
                       `👥 *Guests:* ${guests}\n\n` +
                       `🍽️ *Selected Items:* \n- ${selectedItems.join("\n- ")}`;
 
-        let phoneNumber = "919704899633";  
+        let phoneNumber = "919704899633";
         let url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
         window.open(url, "_blank");
